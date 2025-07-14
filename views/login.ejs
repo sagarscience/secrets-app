@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" id="password" required />
+      <label><input type="checkbox" onclick="togglePassword()"> Show Password</label>
+      <button type="submit">Login</button>
+    </form>
+    <a href="/register">Don't have an account? Register</a>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const x = document.getElementById("password");
+      x.type = x.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>
