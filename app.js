@@ -149,6 +149,35 @@ app.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
+app.get("/edit/:index", authenticateToken, async (req, res) => {
+  const user = await User.findById(req.user.id).select("-password");
+  const secretIndex = req.params.index;
+  const currentSecret = user.secrets[secretIndex];
+
+  res.render("edit", { secret: currentSecret, index: secretIndex });
+});
+
+app.post("/edit/:index", authenticateToken, async (req, res) => {
+  const { updatedSecret } = req.body;
+  const index = req.params.index;
+
+  const user = await User.findById(req.user.id);
+  user.secrets[index] = updatedSecret;
+  await user.save();
+
+  res.redirect("/secret");
+});
+
+app.post("/delete/:index", authenticateToken, async (req, res) => {
+  const index = req.params.index;
+
+  const user = await User.findById(req.user.id);
+  user.secrets.splice(index, 1);
+  await user.save();
+
+  res.redirect("/secret");
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`🚀 Server running at http://localhost:${process.env.PORT}`);
 });

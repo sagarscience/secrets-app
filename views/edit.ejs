@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Secret</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Edit Your Secret</h2>
+    <form action="/edit/<%= index %>" method="POST">
+      <textarea
+        name="updatedSecret"
+        rows="5"
+        required
+        style="width: 100%; padding: 0.8em; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;"
+      ><%= secret %></textarea>
+      <button type="submit">Update Secret</button>
+      <a href="/secret">⬅ Cancel</a>
+    </form>
+  </div>
+</body>
+</html>
