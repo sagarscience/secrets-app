@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Submit Secret</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Submit Your Secret</h2>
+      <form action="/submit" method="POST">
+        <textarea
+          name="secret"
+          rows="5"
+          cols="30"
+          placeholder="Write your secret here..."
+          required
+          style="width: 100%; padding: 0.8em; border: 1px solid #ccc; border-radius: 5px; font-size: 1em;"
+        ></textarea>
+        <button type="submit">Save Secret</button>
+        <a href="/secret">⬅ Back to Secret Page</a>
+      </form>
+    </div>
+  </body>
+</html>

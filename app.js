@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
+import { strict } from "assert";
 
 dotenv.config();
 const app = express();
@@ -32,6 +33,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
+  secrets: [String],
 });
 
 const User = mongoose.model("User", userSchema);
@@ -112,12 +114,32 @@ app.post("/login", async (req, res) => {
   res.redirect("/secret");
 });
 
+app.get("/submit", authenticateToken, (req, res) => {
+  res.render("submit");
+});
+
+app.post("/submit", authenticateToken, async (req, res) => {
+  const { secret } = req.body;
+
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      $push: { secrets: secret },
+    });
+
+    res.redirect("/secret");
+  } catch (err) {
+    console.error("❌ Failed to save secret:", err);
+    res.redirect("/login");
+  }
+});
+
+
 app.get("/secret", authenticateToken, async (req, res) => {
   try {
-    const userData = await User.findById(req.user.id).select("-password"); // exclude password
+    const userData = await User.findById(req.user.id).select("-password");
     res.render("secret", { user: userData });
   } catch (err) {
-    console.error("❌ Failed to load user info:", err);
+    console.error("❌ Failed to load secrets:", err);
     res.redirect("/login");
   }
 });

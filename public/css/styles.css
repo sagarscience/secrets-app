@@ -1,3 +1,10 @@
+/* Reset and Base Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f2f4f8;
@@ -5,9 +12,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  padding: 1em;
+  color: #333;
 }
 
+/* Main Container */
 .container {
   background: white;
   padding: 2.5em 3em;
@@ -15,23 +24,37 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 }
 
+/* Headings */
 h2 {
   margin-bottom: 1em;
-  color: #333;
+  color: #007bff;
 }
 
-input {
+h3 {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+/* Form Elements */
+input, textarea {
   width: 100%;
   padding: 0.8em;
   margin: 0.6em 0;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1em;
+  transition: border 0.3s ease;
 }
 
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Buttons */
 button {
   width: 100%;
   padding: 0.8em;
@@ -49,17 +72,36 @@ button:hover {
   background-color: #0056b3;
 }
 
+/* Labels and Checkboxes */
 label {
   font-size: 0.9em;
+  display: block;
+  margin-bottom: 0.5em;
+  color: #555;
 }
 
+/* Links */
 a {
   display: inline-block;
-  margin-top: 1.5em;
+  margin-top: 1.2em;
   text-decoration: none;
   color: #007bff;
+  font-size: 0.95em;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Secrets List */
+ul {
+  text-align: left;
+  margin-top: 1em;
+  padding-left: 1.2em;
+}
+
+li {
+  margin-bottom: 0.8em;
+  line-height: 1.4;
+  color: #444;
 }
