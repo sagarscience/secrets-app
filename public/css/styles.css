@@ -105,3 +105,34 @@ li {
   line-height: 1.4;
   color: #444;
 }
+
+.small-btn {
+  padding: 0.3em 0.6em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+  background-color: #6c757d;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.small-btn:hover {
+  background-color: #5a6268;
+}
+
+
+.btn-edit {
+  background-color: #007bff;
+}
+.btn-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+}
+.btn-delete:hover {
+  background-color: #c82333;
+}
